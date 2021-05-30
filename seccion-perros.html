@@ -14,7 +14,6 @@
     </head>
     <body>
         <div class="container bg-light d-flex flex-column sticky-footer-wrapper min-vh-100">
-            
             <header class="jumbotron">
                 
                 <h1 class="text-center">
@@ -47,8 +46,8 @@
                             Mascotas
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item active" href="seccion-perros.html">Perros</a>
-                            <a class="dropdown-item" href="seccion-gatos.html">Gatos</a>
+                            <a class="dropdown-item" href="seccion-perros.html">Perros</a>
+                            <a class="dropdown-item active" href="seccion-gatos.html">Gatos</a>
                         </div>
                     </li>
 
@@ -58,30 +57,41 @@
                     </li>
                 </ul>
             </nav>
-
             <main class="flex-fill">
-            <div class="row">
-                <div class="col-12">
-                    <section>
-                        <h2>
-                            Perros
-                        </h2> 
-
-                        <table id="lista-perros" class="table text-center">
-
-                        </table>
-                    </section>
+                <div class="row">
+                    <div class="col-12">
+                        <section>
+                        
+                            <h2>
+                                Perros
+                            </h2> 
+                            <select id="fieldTipoContacto" name="tipoContacto" class="form-control">
+                                <option value="" >-- Selecciona una Raza --</option>
+                                <option value="cualquiera">Cualquiera</option>
+                                <option value="affenpinscher">Affenpinscher</option>
+                                <option value="afghan hound">Afghan Hound</option>
+                                <option value="airedale terrier">Airedale Terrier</option>
+                                <option value="akbash dog">Akbash Dog</option>
+                            </select>
+                        </div>
+                    </div>
+                            
+                            <table  id="lista-perros" class="table text-center">
+                                
+                            </table>
+                        </section>
+                        
+                    </div>
                 </div>
-            </div>
-        </main>
-        <footer>
-            <div class="row bg-dark">
-                <div class="col-12 text-center text-warning">
-                        Programación Web<br/>
-                        Instituto Profesional Duoc UC
+            </main>
+            <footer>
+                <div class="row bg-dark">
+                    <div class="col-12 text-center text-warning">
+                            Programación Web<br/>
+                            Instituto Profesional Duoc UC
+                    </div>
                 </div>
-            </div>
-        </footer>   
+            </footer>   
         </div>
     </body>
 </html>
