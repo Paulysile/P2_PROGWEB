@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-    var nroTotalImagenes = 10;
+    var nroTotalImagenes = 15;
     var nroColumnasPorFila = 5;
     var selectorTablaHTML = "#lista-perros"
     var url = "https://api.thedogapi.com/v1/images/search?limit="+nroTotalImagenes
@@ -12,3 +12,5 @@ $(document).ready(function() {
 function getBtnActionURL() {
     return "https://api.thedogapi.com/v1/images/search?limit=1";
 }
+
+
