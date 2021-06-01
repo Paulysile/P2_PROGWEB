@@ -11,7 +11,25 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="js/galeria-imagenes.js"></script>
         <script src="js/seccion-gatos.js"></script>
-    </head>
+        <script type="text/javascript">
+            var respuesta = [];
+    
+             $(document).ready(function(){
+                //inicio
+                $.get("https://api.thecatapi.com/v1/images/search?limit=100",function(data){
+                    respuesta = data;
+    
+                    $( respuesta).each(function(index,elemnt) {
+                              if(elemnt.breeds.length > 0){
+                                     $('#optRazar').prepend("<option value="+elemnt.id+">"+elemnt.breeds[0].name+"</option>");
+                              }
+                        });
+    
+                    });
+                //fin 
+            });
+    
+            </script>
     <body>
         <div class="container bg-light d-flex flex-column sticky-footer-wrapper min-vh-100">
             <header class="jumbotron">
@@ -61,14 +79,22 @@
                 <div class="row">
                     <div class="col-12">
                         <section>
+                            
                             <h2>
                                 Gatos
                             </h2> 
+                            <select id="optRazar" name="raza">
+                                <option value="">---      Seleccione una Raza  ---</option>
+                                <option value="">---      Cualquiera ---</option>
+                            </select>
+                        </div>
+                    </div>
                             
                             <table  id="lista-gatos" class="table text-center">
                                 
                             </table>
                         </section>
+                        
                     </div>
                 </div>
             </main>
