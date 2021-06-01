@@ -10,8 +10,33 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript">
+            var respuesta = [];
+    
+             $(document).ready(function(){
+                //inicio
+                $.get("https://api.thedogapi.com/v1/images/search?limit=100",function(data){
+                    respuesta = data;
+    
+                    $( respuesta).each(function(index,elemnt) {
+                              if(elemnt.breeds.length > 0){
+                                     $('#optRazar').prepend("<option value="+elemnt.id+">"+elemnt.breeds[0].name+"</option>");
+                              }
+                        });
+    
+                    });
+                //fin 
+            });
+    
+        </script>
+    
     </head>
     <body>
+        <select id="optRazar" name="raza">
+            <option value="">Seleccione raza</option>
+        </select>
+        
         <div class="container bg-light d-flex flex-column sticky-footer-wrapper min-vh-100">
             <header class="jumbotron">              
                 <h1 class="text-center">
