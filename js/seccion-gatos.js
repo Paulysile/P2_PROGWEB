@@ -1,3 +1,12 @@
+Vue.use(Vuetify);
+
+
+new Vue({
+    el: '#app2',
+    vuetify: new Vuetify(),
+    
+  })
+
 new Vue({
     el: '#app',
     vuetify: new Vuetify(),
