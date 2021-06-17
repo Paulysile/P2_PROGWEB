@@ -12,6 +12,7 @@
 
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -80,194 +81,89 @@
                             <v-app>
                                 <v-content>
                                     <v-container>
-
-                                        <v-layout align-center justify-center>
-
+                                        <v-layout align-center justify-center>                                        
                                             <v-flex xs6>
-                                                <v-select :items="breeds" item-text="name" v-model="selected_breed"
-                                                    label="Seleciona una Raza" label="Cualquiera" return-object attach>
+                                                <v-select 
+                                                    :items="breeds"label="Seleccione Raza"
+                                                    dense
+                                                    outlined 
+                                                    item-text="name" v-model="selected_breed"
+                                                    return-object attach
+                                                    >
                                                 </v-select>
                                             </v-flex>
-
                                         </v-layout>
-
-
+                                        
                                         <v-layout>
                                             <v-flex xs12 sm8 offset-sm2>
                                                 <v-card>
-
                                                     <v-carousel>
                                                         <v-carousel-item v-for="(item,i) in images" :key="i"
                                                             :src="item.url"></v-carousel-item>
                                                     </v-carousel>
 
+                                                <div id="app">
+                                                    <v-app id="inspire">
+                                                        <v-expansion-panels>
+                                                            <v-expansion-panel>
+                                                                </br>
+                                                                <v-expansion-panel-header style="background-color:orange">
+                                                                    Ver Detalles
+                                                                </v-expansion-panel-header>
+                                                            <v-expansion-panel-content>
+                                                                <v-card-title primary-title>
 
-                                                    <v-card-title primary-title>
+                                                                        <div class="text-xs-center">                                                                                                                        
+                                                                            <div>
+                                                                                </br>
+                                                                                <h3 class="headline mb-0"><strong>Nombre: </strong>{{selected_breed.name}}</h3>                                                            
+                                                                                </br>
+                                                                            </div>                                                                
+                                                                    </v-card-title>
 
-                                                        <div class="text-xs-center">
-                                                            <v-chip>
-                                                                <v-avatar>
-                                                                    <img :src="country_flag_url"
-                                                                        :alt="selected_breed.country_code">
-                                                                </v-avatar>
-                                                                {{selected_breed.origin}}
-                                                            </v-chip>
-                                                            <v-chip v-if="selected_breed.experimental==1">Experimental
-                                                            </v-chip>
-                                                            <v-chip v-if="selected_breed.rex==1">Rex</v-chip>
-                                                            <v-chip v-if="selected_breed.natural==1">Natural</v-chip>
-                                                            <v-chip v-if="selected_breed.rare==1">Rare</v-chip>
-                                                            <v-chip v-if="selected_breed.hairless==1">Hairless</v-chip>
-                                                            <v-chip v-if="selected_breed.suppressed_tail==1">Suppressed
-                                                                Tail</v-chip>
-                                                            <v-chip v-if="selected_breed.short_legs==1">Short Legs
-                                                            </v-chip>
-                                                            <v-chip v-if="selected_breed.hypoallergenic==1">
-                                                                Hypoallergenic</v-chip>
-                                                        </div>
-                                                        <div>
-                                                            <h3 class="headline mb-0">{{selected_breed.name}}</h3>
-                                                            <div>{{selected_breed.description}}</div>
-                                                            <div>---</div>
-                                                            <div><i>{{selected_breed.temperament}}</i></div>
-                                                        </div>
-                                                    </v-card-title>
+                                                                        <v-list>
+                                                                            <v-list-tile @click="">
+                                                                            <!--Detalles perro-->
+                                                                                <v-list-tile-content>
+                                                                                    <strong>Peso:</strong>
+                                                                                </v-list-tile-content>
 
+                                                                                <v-list-tile-action>
+                                                                                    <div>
+                                                                                        <i>{{selected_breed.weight.metric}} Kg</i>
+                                                                                    </div>
 
-                                                    <v-list>
-                                                        <v-list-tile @click="">
+                                                                                <v-list-tile-content>
+                                                                                    <strong>Altura:</strong>
+                                                                                </v-list-tile-content>
 
-                                                            <v-list-tile-content>
+                                                                                <v-list-tile-action>
+                                                                                    <div>
+                                                                                        <i>{{selected_breed.height.metric}} cm</i>
+                                                                                    </div>
+                                                                                <v-list-tile-content>
+                                                                                    <strong>Promedio esperanza de Vida:</strong>
+                                                                                </v-list-tile-content>
 
-                                                                <strong>
-                                                                    Peso (kg)</strong>
-
-                                                            </v-list-tile-content>
-
-                                                            <v-list-tile-action>
-                                                                <div>
-                                                                    <i>{{selected_breed.weight.metric}}</i>
-                                                                </div>
-                                                        </v-list-tile>
-                                                        <v-list-tile-content>
-                                                            <strong>
-                                                                Estatura (cm)</strong>
-                                                        </v-list-tile-content>
-
-                                                        <v-list-tile-action>
-                                                            <div>
-                                                                <i>{{selected_breed.height.metric}}</i>
-                                                            </div>
-                                                            </v-list-tile>
-                                                            <v-list-tile-action>
-
-                                                                </v-list-tile>
-
-                                                                <v-list-tile>
-                                                                    <v-list-tile-content>
-                                                                        <strong>
-                                                                            Nombre </strong>
-                                                                    </v-list-tile-content>
-
-                                                                    <div>
-                                                                        <i>{{selected_breed.name}}</i>
-                                                                    </div>
-                                                                </v-list-tile>
-
-                                                                <v-list-tile>
-                                                                    <v-list-tile-content>
-                                                                        <strong>Promedio esperanza de Vida
-                                                                            (Años)</strong>
-                                                                    </v-list-tile-content>
-
-                                                                    <v-list-tile-action>
-                                                                        <div>
-                                                                            <i>{{selected_breed.life_span}}</i>
-                                                                        </div>
-
-
-                                                    </v-list>
-
-                                                    <v-card-actions>
-
-                                                    </v-card-actions>
-                                                </v-card>
+                                                                                <v-list-tile-action>
+                                                                                    <div>
+                                                                                        <i>{{selected_breed.life_span}}</i>
+                                                                                    </div>
+                                                                                </br>                                                            
+                                                                            </v-list-tile>
+                                                                        </v-list>                                                    
+                                                                    </v-card>
+                                                                </v-expansion-panel-content>
+                                                            </v-expansion-panel>
+                                                        </v-expansion-panels>
+                                                    </v-app>
+                                                </div>
                                             </v-flex>
                                         </v-layout>
                                     </v-container>
                                 </v-content>
                             </v-app>
                         </div>
-
-
-                        <script>
-                            new Vue({
-                                el: '#app',
-                                vuetify: new Vuetify(),
-                                data: {
-                                    country_flag_url: "",
-                                    images: [],
-                                    breeds: [],
-                                    selected_breed: {},
-                                    current_image: {}
-                                },
-                                created() {
-                                    this.getBreeds();
-                                },
-                                watch: {
-
-                                    selected_breed: function () {
-                                        console.log(this.selected_breed)
-
-                                        let country_code = this.selected_breed.country_code.toLowerCase();
-
-                                        this.country_flag_url = `https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/flags/1x1/${country_code}.svg`;
-                                        this.getImages();
-                                    }
-                                },
-                                methods: {
-
-                                    async getBreeds() {
-                                        try {
-                                            axios.defaults.headers.common['x-api-key'] = "DEMO-API-KEY" // Replace this with your API Key, as it's set to defaults it will be used from now onwards
-
-                                            let response = await axios.get('https://api.thedogapi.com/v1/breeds/')
-                                            this.breeds = response.data;
-                                            console.log("-- (" + this.breeds.length + ") Breeds from TheDogAPI.com")
-
-                                            // pick one to display initially
-                                            this.selected_breed = this.breeds[10]
-                                        } catch (err) {
-                                            console.log(err)
-                                        }
-                                    },
-                                    async getImages() {
-                                        try {
-
-                                            let query_params = {
-                                                breed_ids: this.selected_breed.id,
-                                                limit: 8
-                                            }
-
-                                            let response = await axios.get('https://api.thedogapi.com/v1/images/search', { params: query_params })
-
-                                            this.pagination_count = response.headers['pagination-count'];
-                                            this.images = response.data
-                                            this.current_image = this.images[0]
-
-
-
-                                            console.log("-- (" + this.images.length + ") Images from TheDogAPI.com")
-                                            console.log(this.pagination_count, 'images available for this query.')
-
-                                        } catch (err) {
-                                            console.log(err)
-                                        }
-                                    }
-
-                                }
-                            })
-                        </script>
                     </section>
                 </div>
             </div>
@@ -282,5 +178,6 @@
         </footer>
     </div>
 </body>
+<script src="js/seccion-perros.js"></script>
 
 </html>
